@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from "react";
-import { BRUSH, ERASER } from "../constants/Tools";
+import { BRUSH, ERASER, STAMP } from "../constants/Tools";
 
 let ctx;
 
@@ -7,9 +7,11 @@ export default class Canvas extends Component {
 	constructor(props) {
 		super(props);
 		this.isDrawing = false;
+		this.isStamping = false;
 		this.start = this.start.bind(this);
 		this.end = this.end.bind(this);
 		this.draw = this.draw.bind(this);
+		this.stamp = this.stamp.bind(this);
 	}
 
 	componentDidMount() {
@@ -20,6 +22,10 @@ export default class Canvas extends Component {
 
 	getStroke() {
 		return this.props.tools.brush_size;
+	}
+
+	getColor() {
+		return this.props.tools.brush_color;
 	}
 
 	getX(event) {
@@ -45,6 +51,16 @@ export default class Canvas extends Component {
 			this.isDrawing = true;
 			ctx.beginPath();
 			ctx.moveTo(this.getX(event), this.getY(event));
+			ctx.strokeStyle = this.getColor();
+			event.preventDefault();
+		} 
+
+		if (this.props.tools.tool === ERASER) {
+			ctx.strokeStyle = 'white';
+		}
+		if (this.props.tools.tool === STAMP) {
+			this.isStamping = true;
+			this.stamp();
 			event.preventDefault();
 		}
 	}
@@ -58,6 +74,11 @@ export default class Canvas extends Component {
 			ctx.stroke();
 		}
 		event.preventDefault();
+	}
+
+	stamp(event) {
+		let img = document.querySelector('.stamp-preview');
+		ctx.drawImage(img, 10, 10, 50, 50);
 	}
 
 	end(event) {
