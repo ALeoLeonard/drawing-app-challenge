@@ -12,6 +12,7 @@ export default class Canvas extends Component {
 		this.end = this.end.bind(this);
 		this.draw = this.draw.bind(this);
 		this.stamp = this.stamp.bind(this);
+		this.reset = this.reset.bind(this);
 	}
 
 	componentDidMount() {
@@ -61,7 +62,6 @@ export default class Canvas extends Component {
 		if (this.props.tools.tool === STAMP) {
 			this.isStamping = true;
 			this.stamp();
-			event.preventDefault();
 		}
 	}
 
@@ -77,8 +77,16 @@ export default class Canvas extends Component {
 	}
 
 	stamp(event) {
-		let img = document.querySelector('.stamp-preview');
-		ctx.drawImage(img, 10, 10, 50, 50);
+		let imageStamp = document.querySelector('.stamp-preview');
+		let canvas = document.querySelector('.canvas');
+		// change canvas width to make up for sidebar
+			canvas.onclick = function(event){
+            let x = event.clientX - imageStamp.height/2;
+            let y = event.clientY - imageStamp.height/2;
+            let dx = 100;
+            let dy = 100;
+            ctx.drawImage(imageStamp,x,y,dx,dy);
+      };
 	}
 
 	end(event) {
@@ -88,6 +96,10 @@ export default class Canvas extends Component {
 			this.isDrawing = false;
 		}
 		event.preventDefault();
+	}
+
+	reset(event) {
+		ctx.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
 	}
 
 	render() {

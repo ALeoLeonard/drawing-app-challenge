@@ -22,7 +22,13 @@ export default function ImageStamp(props) {
         type="file" 
         onChange={imageUpload}
       />
-      <img className="stamp-preview" src={require('../../public/img/st-icon.png')} height="200" alt="Stamp preview" />
+      <img 
+        className="stamp-preview" 
+        src={require('../../public/img/st-icon.png')} 
+        height="50" 
+        width="50" 
+        alt="Stamp preview" 
+      />
   </div>
   );
 }
