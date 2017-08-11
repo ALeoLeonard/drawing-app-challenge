@@ -20,8 +20,7 @@
 	top:0;
 	right: 0;
 	height: 100vh;
-	background-color: #CB5599;
-	/*background-color: #263238;*/
+	background-color: #BF5C97;
 }
 .section {
 	min-height: 100px;
@@ -30,3 +29,117 @@
 }
 
 /* Candidate defined styles go here! */
+
+.section--brush-size, .section--image-stamp, .section--save-canvas {
+	border-top: 4px solid #494949;
+	border-bottom: 4px solid #494949;
+}
+
+.section--tool-selector {
+	border-top: none;
+	margin-top: 10px;
+}
+
+.section__heading {
+	color: #333333;
+	margin: 10px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+input{
+	cursor: pointer;
+}
+
+.tool-container {
+	display: inline-flex;
+	margin: 20px 10px;
+}
+
+/*Radio Styles*/
+input[type="radio"] {
+	display:none;
+}
+
+.radio label{
+	color: #333333;
+	padding: 2px;
+	background:linear-gradient(to top right, #828282,#A7A7A7);
+	margin: 10px 4px;
+	border: 1px solid #D3D3D3;
+	border-radius: 5px;
+}
+
+.radio label:hover {
+	cursor: pointer;
+	box-shadow: 0 0 2pt 2pt #494949;
+}
+
+input[type="radio"] label {
+  display: inline-block;
+  background: linear-gradient(to top right, #828282,#A7A7A7);
+  padding: 4px 11px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+	box-shadow: 0 0 2pt 2pt #494949;
+}
+
+/*Brush Size*/
+
+input[type="number"] {
+	cursor: pointer;
+	background: white;
+	width: 160px;
+  height: 30px;
+  margin: 0 14px;
+}
+
+button {
+	cursor: pointer;
+}
+
+/*Color input*/
+input[type="color"] {
+ 	width: 100px;
+	height: 32px;
+  margin: 10px 12px;
+}
+
+/*upload image styles*/
+/*Note: Given more time I'd fix get this button looking right*/
+
+input[type=file]{
+	width: 100px;
+	height: 24px; 
+  color:transparent;
+  display: block;
+  margin: 10px 10px;
+}
+
+/*.upload-image{
+	color: #333333;
+	padding: 2px;
+	background:linear-gradient(to top right, #828282,#A7A7A7);
+	margin: 10px 4px;
+	border: 1px solid #D3D3D3;
+	border-radius: 5px;
+}*/
+
+.stamp-preview {
+	margin: 0px 20px;
+}
+
+/*button styles*/
+button {
+	height: 36px;
+  font-size: 16px;
+	color: #333333;
+	padding: 2px;
+	background:linear-gradient(to top right, #828282,#A7A7A7);
+	margin: 12px;
+	border: 1px solid #D3D3D3;
+	border-radius: 5px;
+}

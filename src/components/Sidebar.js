@@ -44,12 +44,12 @@ export default class Sidebar extends Component {
 					/>
 				</section>
 
-				<section className="section section--image-stamp">
+				<section className="section section--reset-canvas">
 					<h3 className="section__heading">Reset Canvas</h3>
 					<Reset />
 				</section>
 
-				<section className="section section--image-stamp">
+				<section className="section section--save-canvas">
 					<h3 className="section__heading">Save Canvas</h3>
 					<Save />
 				</section>

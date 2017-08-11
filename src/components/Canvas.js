@@ -50,6 +50,7 @@ export default class Canvas extends Component {
 	start(event) {
 		if (this.props.tools.tool === BRUSH || this.props.tools.tool === ERASER) {
 			this.isDrawing = true;
+			this.isStamping = false;
 			ctx.beginPath();
 			ctx.moveTo(this.getX(event), this.getY(event));
 			ctx.strokeStyle = this.getColor();
@@ -77,16 +78,17 @@ export default class Canvas extends Component {
 	}
 
 	stamp(event) {
-		let imageStamp = document.querySelector('.stamp-preview');
-		let canvas = document.querySelector('.canvas');
-		// change canvas width to make up for sidebar
-			canvas.onclick = function(event){
+		if (this.isStamping && !this.isDrawing) {
+			let imageStamp = document.querySelector('.stamp-preview');
+			let canvas = document.querySelector('.canvas');
+				canvas.onclick = function(event){
             let x = event.clientX - imageStamp.height/2;
             let y = event.clientY - imageStamp.height/2;
             let dx = 100;
             let dy = 100;
             ctx.drawImage(imageStamp,x,y,dx,dy);
-      };
+	      };
+	  }
 	}
 
 	end(event) {

@@ -4,7 +4,7 @@ import { BRUSH, STAMP, ERASER } from "../constants/Tools";
 export default function ToolSelector(props) {
 	const { action, tool } = props;
 	return (
-		<div>
+		<div className="tool-container">
 			<div className="radio">
 				<input type="radio" name="tool" id="brush-select"
 					value={BRUSH} 
